@@ -1,0 +1,33 @@
+#conncectCard{
+    background-color: lightgray;
+    padding-top: 20px;
+}
+.btn-karl{
+    padding: 8px;
+    font-size: 18px;
+}
+.btn{
+    width:75%
+}
+.btn:hover{
+    background-color: blue;
+}
+.closeModal{
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.mt-2 {
+    margin-top: 3.3rem!important;
+}
+.card {
+    border-radius: 1.25rem;
+}
+#submit{
+    font-size: 18px;
+}
+.validation{
+    color: red;
+}
+
+
