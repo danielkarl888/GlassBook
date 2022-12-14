@@ -6,15 +6,17 @@ import activeUser from "./ManagingUsersList/activeUser"
 function LoginPage(){
     
     const [newUser, setNewUser] = useState({
-        userName: "",
-        display: "",
+        user_name: "",
+        user_id: "",
         password: "",
-        conversations: ""
+        country: "",
+        age : "",
+        comments: ""
     });
     
-    const handleUserNameChange = (event) => {
-        setNewUser({ ...newUser, userName: event.target.value })
-        console.log(newUser.userName);
+    const handleuser_nameChange = (event) => {
+        setNewUser({ ...newUser, user_name: event.target.value })
+        console.log(newUser.user_name);
     }
     const handlePasswordChange = (event) => {
         setNewUser({ ...newUser, password: event.target.value })
@@ -24,19 +26,19 @@ function LoginPage(){
         event.preventDefault();
         var bool = isValidUser(newUser)
         if(!bool){
-            setNewUser({userName: "",
+            setNewUser({user_name: "",
             display: "",
             password: "",
             conversations: ""});
         }
     }
     const isValidUser = (newUser)=>{
-        if(!isExistUsername(newUser.userName)){
+        if(!isExistuser_name(newUser.user_name)){
             return false;
         }
         for(var j =0; j<userList.length;j++){
-            if(newUser.password == userList[j].password && newUser.userName == userList[j].userName){
-                activeUser.userName = userList[j].userName;
+            if(newUser.password == userList[j].password && newUser.user_name == userList[j].user_name){
+                activeUser.user_name = userList[j].user_name;
                 activeUser.display = userList[j].display;
                 activeUser.conversations = userList[j].conversations;
                 console.log(activeUser.conversations);
@@ -45,9 +47,9 @@ function LoginPage(){
         }
         return false;
     }
-    const isExistUsername = (uname)=>{
+    const isExistuser_name = (uname)=>{
         for(var i=0; i<userList.length; i++) {
-            if (uname==userList[i].userName){
+            if (uname==userList[i].user_name){
                 return true;
             }
         }
@@ -68,16 +70,16 @@ function LoginPage(){
             </div>
             <div className="form-floating mb-3 input-padding-5">
                 <input
-                    onChange={handleUserNameChange}
+                    onChange={handleuser_nameChange}
                     type="text"
                     className="form-control mt-2"
                     id="floatingUser"
-                    placeholder="Username"
-                    name="userName"
-                    value={newUser.userName}>
+                    placeholder="user_name"
+                    name="user_name"
+                    value={newUser.user_name}>
                 </input>
-                {(!isExistUsername(newUser.userName)) && newUser.userName!=='' ? <div className="m-1 badge rounded-pill bg-danger">user name is not registered!</div> : null}
-                <label htmlFor="floatingUser" className="fs-4">Username</label>
+                {(!isExistuser_name(newUser.user_name)) && newUser.user_name!=='' ? <div className="m-1 badge rounded-pill bg-danger">user name is not registered!</div> : null}
+                <label htmlFor="floatingUser" className="fs-4">user_name</label>
             </div>
             <>
                 <div className="form-floating mb-3 input-padding-5">
@@ -90,7 +92,7 @@ function LoginPage(){
                         name="Password"
                         value={newUser.password}>
                     </input>
-                    {(isExistUsername(newUser.userName)) && !isValidUser(newUser) ? <div className="m-1 badge rounded-pill bg-danger">Password is incorrect!</div> : null}
+                    {(isExistuser_name(newUser.user_name)) && !isValidUser(newUser) ? <div className="m-1 badge rounded-pill bg-danger">Password is incorrect!</div> : null}
                     <label htmlFor="floatingPassword" className="fs-4">Password</label>
                 </div>
             </>

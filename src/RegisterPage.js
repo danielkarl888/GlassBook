@@ -5,14 +5,13 @@ import activeUser from "./ManagingUsersList/activeUser";
 function RegisterPage() {
 
     const [newUser, setNewUser] = useState({
-        userName: "",
+        user_name: "",
         display: "",
         password: "",
-        conversations: [{ username: "", messages: [{ src: "send", type: "text", context: "", time: "" }]}]
     });
-    const handleUserNameChange = (event) => {
-        setNewUser({ ...newUser, userName: event.target.value })
-        console.log(newUser.userName);
+    const handleuser_nameChange = (event) => {
+        setNewUser({ ...newUser, user_name: event.target.value })
+        console.log(newUser.user_name);
     }
     const handlePasswordChange = (event) => {
         setNewUser({ ...newUser, password: event.target.value })
@@ -28,10 +27,10 @@ function RegisterPage() {
         event.preventDefault();
         validAllandRegister(newUser);
         var bool = validAllandRegister(newUser);
-        setNewUser({userName: "",
+        setNewUser({user_name: "",
         display: "",
         password: "",
-        conversations: [{ username: "", messages: [{ src: "send", type: "text", context: "", time: "" }]}]});
+        conversations: [{ user_name: "", messages: [{ src: "send", type: "text", context: "", time: "" }]}]});
         console.log(bool);
         if(bool){
             console.log("succedd!!");
@@ -47,20 +46,20 @@ function RegisterPage() {
             return true;
         }
     }
-    const validUsername = (uname)=>{
+    const validuser_name = (uname)=>{
         for(var i=0; i<userList.length; i++) {
-            if (uname===userList[i].userName){
+            if (uname===userList[i].user_name){
                 return false;
             }
         }
         return true;
     }
     const validAllandRegister = (newUser)=>{
-        if (validPassword(newUser.password) && validUsername(newUser.userName)){
+        if (validPassword(newUser.password) && validuser_name(newUser.user_name)){
             userList.push(newUser);
             setSuccessMessage(true);
             activeUser.conversations=newUser.conversations;
-            activeUser.userName=newUser.userName;
+            activeUser.user_name=newUser.user_name;
             activeUser.display=newUser.display;
             console.log(activeUser);
             console.log(userList[userList.length - 2])
@@ -84,16 +83,16 @@ function RegisterPage() {
 
             <div className="form-floating mb-3 input-padding-5">
                 <input
-                    onChange={handleUserNameChange}
+                    onChange={handleuser_nameChange}
                     type="text"
                     className="form-control mt-2"
                     id="floatingUser"
-                    placeholder="Username"
-                    name="userName"
-                    value={newUser.userName}>
+                    placeholder="user_name"
+                    name="user_name"
+                    value={newUser.user_name}>
                 </input>
-                {(!validUsername(newUser.userName) && !submitted && newUser.userName!="") ? <div className=" m-1 badge rounded-pill bg-danger">please select a uniqe user name!</div> : null}
-                <label htmlFor="floatingUser" className="fs-4">Username</label>
+                {(!validuser_name(newUser.user_name) && !submitted && newUser.user_name!="") ? <div className=" m-1 badge rounded-pill bg-danger">please select a uniqe user name!</div> : null}
+                <label htmlFor="floatingUser" className="fs-4">user_name</label>
             </div>
             <>
                 <div className="form-floating mb-3 input-padding-5">
@@ -106,7 +105,7 @@ function RegisterPage() {
                         name="Password"
                         value={newUser.password}>
                     </input>
-                    {(!validPassword(newUser.password)  && !submitted && newUser.userName != "") ? <div className="m-1 badge rounded-pill bg-danger">please select at least 1 letter and 1 number!</div> : null}
+                    {(!validPassword(newUser.password)  && !submitted && newUser.user_name != "") ? <div className="m-1 badge rounded-pill bg-danger">please select at least 1 letter and 1 number!</div> : null}
                     <label htmlFor="floatingPassword" className="fs-4">Password</label>
                 </div>
             </>
