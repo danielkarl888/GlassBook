@@ -4,7 +4,5 @@ const userList = [{
     { comment_id: "2", date: "15/12/22", comment_txt: "2nd comment", rate: "1", book_id: "4" }
     ]
 },
-
-
 ];
 export default userList;
