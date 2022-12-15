@@ -111,8 +111,6 @@ function LoginPage() {
                     </div>
 
                     {isValidUser(newUser) ? <LinkToChat /> : null}
-
-
                 </div>
             </form>
             <div className="col-2"></div>

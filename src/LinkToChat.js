@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 
 function LinkToChat() {
-    return(
+    return (
         <>
-        <div className="row">
-        <div className="col-3">
-        </div>
-        <Link className="col-6 text-center" to='/chat'>
-        <button type="submit" className="btn btn-primary btn-karl fs-4 m-3" id="login-btn">
-            <i className="bi bi-chat-left-dots-fill"></i> Login</button>
-        </Link>        
-        <div className="col-3"></div>
-      </div>
+            <div className="row">
+                <div className="col-3">
+                </div>
+                <Link className="col-6 text-center" to='/main'>
+                    <button type="submit" className="btn btn-primary btn-karl fs-4 m-3" id="login-btn">
+                        <i className="bi bi-chat-left-dots-fill"></i> Login</button>
+                </Link>
+                <div className="col-3"></div>
+            </div>
         </>
     );
 }
