@@ -35,12 +35,23 @@ table {
   width: 100%;
 }
 
-th, td {
+th, td, table {
   border: 1px solid #ddd;
   padding: 8px;
+  text-align: center;
+
 }
 
 th {
-  background-color: #ddd;
+  background-color: rgb(77, 97, 160);
   font-weight: bold;
+  position: sticky;
+  top: 0; 
 }
+tr:hover{
+    background-color: grey;
+}
+ h2{
+    text-align: center;
+
+ }
