@@ -7,11 +7,21 @@ import moment from "moment";
 
 function MainPage() {
     const [comments, setComments] = useState(null);
+    const [topBooks, setTopBooks] = useState(null);
+
     useEffect(() => {
         async function fetchData() {
             const response = await fetch('http://localhost:5182/api/Comments');
             const json = await response.json();
             setComments(json);
+        }
+        fetchData();
+    }, []);
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch('http://localhost:5182/api/Comments/top10');
+            const json = await response.json();
+            setTopBooks(json);
         }
         fetchData();
     }, []);
@@ -22,15 +32,15 @@ function MainPage() {
                 <div class="col-sm">
                     One of three columns
                 </div>
-                <div class="col-6">
+                <div class="col-5">
                     <div>
-                        <h2> Last 50 comments:</h2>
+                        <h2> Last 20 Comments:</h2>
                         <table className="table table-bordered">
                             <tr>
                                 <th>#</th>
                                 <th>Title</th>
                                 <th>Reviewer</th>
-                                <th>rate</th>
+                                <th>Rate</th>
                                 <th>Comment Text</th>
                                 <th>Date</th>
                             </tr>
@@ -44,15 +54,44 @@ function MainPage() {
                                     <td>{comment.rate}</td>
                                     <td>{comment.comment_txt}</td>
                                     <td>{moment(comment.date).utc().format('DD/MM/YYYY')}</td>
-
                                 </tr>)
                             ) : (
-                                <div>Loading...</div>
-                            )}
+                                <div class="spinner-border" role="status">
+                                    <span class="sr-only"></span>
+                                </div>)}
                         </table>
                     </div>                </div>
                 <div class="col-sm">
-                    One of three columns
+                    <div>
+                        <h2> Top 10 rating books:</h2>
+                        <table className="table table-bordered">
+                            <tr>
+                                <th>#</th>
+                                <th>Title</th>
+                                <th>Author</th>
+                                <th>Avg rating</th>
+                                <th>Comment Text</th>
+                                <th>Publisher</th>
+                            </tr>
+
+                            {topBooks ? (
+
+                                topBooks.map(book => <tr>
+                                    <td>{book.seq}</td>
+                                    <td>{book.book_name}</td>
+                                    <td>{book.author_name}</td>
+                                    <td>{book.avg_rate}</td>
+                                    <td><img src={book.img}></img></td>
+                                    <td>{book.publisher}</td>
+
+                                </tr>)
+                            ) : (
+                                <div class="spinner-border" role="status">
+                                    <span class="sr-only"></span>
+                                </div>
+                            )}
+                        </table>
+                    </div>
                 </div>
             </div>
 
