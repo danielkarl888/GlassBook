@@ -3,32 +3,38 @@ import { useState, useEffect } from 'react';
 import userList from './ManagingUsersList/userList';
 import LinkToChat from "./LinkToChat";
 import activeUser from "./ManagingUsersList/activeUser"
+import activeBook from "./activeBook";
 import moment from "moment";
 
-function ProfileDetails() {
+function BookDetails({ id }) {
     const [comments, setComments] = useState(null);
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch('http://localhost:5182/api/Users/');
+            const response = await fetch(`http://localhost:5182/api/Books/${activeBook.book_id}`);
             const json = await response.json();
             setComments(json);
         }
         fetchData();
     }, []);
-
+    console.log(activeBook)
     return (
-        <div class="container">
-            <div class="row">
+        <div className="container">
+            <div className="row">
                 <div class="col-sm">
                     One of three columns
                 </div>
-                <div class="col-6">
+                <div className="col-6">
                     <div>
-                        <h2> Last 50 Comments:</h2>
+                        {comments ? (<div><h2> {comments[0].book_name}</h2>
+                            <img className="rounded img-fluidrounded mx-auto d-block" src={comments[0].img} alt="hii" width="20%"  ></img>
+                            <span><h5>number of reviews : {comments.length}</h5> </span>
+                        </div>)
+
+
+                            : (<h2> Loading...:</h2>)}
                         <table className="table table-bordered">
                             <tr>
                                 <th>#</th>
-                                <th>Title</th>
                                 <th>Reviewer</th>
                                 <th>Rate</th>
                                 <th>Comment Text</th>
@@ -39,7 +45,6 @@ function ProfileDetails() {
 
                                 comments.map(comment => <tr>
                                     <td>{comment.seq}</td>
-                                    <td>{comment.book_name}</td>
                                     <td>{comment.user_name}</td>
                                     <td>{comment.rate}</td>
                                     <td>{comment.comment_txt}</td>
@@ -52,7 +57,7 @@ function ProfileDetails() {
                         </table>
                     </div>
                 </div>
-                <div class="col-sm">
+                <div className="col-sm">
                     One of three columns
                 </div>
             </div>
@@ -63,4 +68,4 @@ function ProfileDetails() {
 
 
 }
-export default ProfileDetails;
+export default BookDetails;

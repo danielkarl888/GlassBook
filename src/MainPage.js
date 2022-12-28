@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import userList from './ManagingUsersList/userList';
 import LinkToChat from "./LinkToChat";
 import activeUser from "./ManagingUsersList/activeUser"
+import activeBook from "./activeBook";
 import moment from "moment";
 
 function MainPage() {
@@ -25,7 +26,10 @@ function MainPage() {
         }
         fetchData();
     }, []);
-
+    const onClickHandler = (event) => {
+        activeBook.book_id = event.target.value
+        console.log(activeBook);
+    }
     return (
         <div class="container">
             <div class="row">
@@ -49,28 +53,31 @@ function MainPage() {
 
                                 comments.map(comment => <tr>
                                     <td>{comment.seq}</td>
-                                    <td>{comment.book_name}</td>
+                                    <td><Link to='/book_details' onClick={() => {
+                                        activeBook.book_id = comment.book_id;
+                                        console.log(activeBook);
+                                    }}>{comment.book_name}</Link></td>
                                     <td>{comment.user_name}</td>
                                     <td>{comment.rate}</td>
                                     <td>{comment.comment_txt}</td>
                                     <td>{moment(comment.date).utc().format('DD/MM/YYYY')}</td>
                                 </tr>)
                             ) : (
-                                <div class="spinner-border" role="status">
+                                <div class="spinner-border text-primary" role="status">
                                     <span class="sr-only"></span>
                                 </div>)}
                         </table>
                     </div>                </div>
                 <div class="col-sm">
                     <div>
-                        <h2> Top 10 rating books:</h2>
+                        <h2> Top 10 Rating Books:</h2>
                         <table className="table table-bordered">
                             <tr>
                                 <th>#</th>
                                 <th>Title</th>
                                 <th>Author</th>
                                 <th>Avg rating</th>
-                                <th>Comment Text</th>
+                                <th>Image</th>
                                 <th>Publisher</th>
                             </tr>
 
@@ -78,15 +85,18 @@ function MainPage() {
 
                                 topBooks.map(book => <tr>
                                     <td>{book.seq}</td>
-                                    <td>{book.book_name}</td>
+                                    <td><Link to='/book_details' onClick={() => {
+                                        activeBook.book_id = book.book_id;
+                                        console.log(activeBook);
+                                    }}>{book.book_name}</Link></td>
                                     <td>{book.author_name}</td>
-                                    <td>{book.avg_rate}</td>
+                                    <td><strong>{book.avg_rate}</strong></td>
                                     <td><img src={book.img}></img></td>
                                     <td>{book.publisher}</td>
 
                                 </tr>)
                             ) : (
-                                <div class="spinner-border" role="status">
+                                <div class="spinner-border text-primary" role="status">
                                     <span class="sr-only"></span>
                                 </div>
                             )}
