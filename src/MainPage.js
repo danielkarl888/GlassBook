@@ -5,7 +5,7 @@ import LinkToChat from "./LinkToChat";
 import activeUser from "./ManagingUsersList/activeUser"
 import activeBook from "./activeBook";
 import moment from "moment";
-
+import NavBar from "./NavBar";
 function MainPage() {
     const [comments, setComments] = useState(null);
     const [topBooks, setTopBooks] = useState(null);
@@ -26,19 +26,18 @@ function MainPage() {
         }
         fetchData();
     }, []);
-    const onClickHandler = (event) => {
-        activeBook.book_id = event.target.value
-        console.log(activeBook);
-    }
+
     return (
         <div class="container">
+            <NavBar />
+
             <div class="row">
                 <div class="col-sm">
                     One of three columns
                 </div>
                 <div class="col-5">
                     <div>
-                        <h2> Last 20 Comments:</h2>
+                        <h2 className="display-4"> Last 20 Comments</h2>
                         <table className="table table-bordered">
                             <tr>
                                 <th>#</th>
@@ -70,7 +69,7 @@ function MainPage() {
                     </div>                </div>
                 <div class="col-sm">
                     <div>
-                        <h2> Top 10 Rating Books:</h2>
+                        <h2 className="display-4"> Top 10 Rating Books</h2>
                         <table className="table table-bordered">
                             <tr>
                                 <th>#</th>
