@@ -30,7 +30,7 @@ function RegisterPage() {
     }
     const [submitted, setSubmitted] = useState(false);
     const [successMessage, setSuccessMessage] = useState(false);
-    const handleSubmit = (event, newUser) => {
+    /*const handleSubmit = (event, newUser) => {
         event.preventDefault();
         validAllandRegister(newUser);
         var bool = validAllandRegister(newUser);
@@ -49,12 +49,97 @@ function RegisterPage() {
         } else {
             setSubmitted(false);
         }
+    }*/
+    const handleSubmit = (event, newUser) => {
+        event.preventDefault();
+        /*
+        console.log("handle submit started")
+        console.log(newUser)
+        fetch(`http://localhost:5182/api/Users/isExistUserName?user_name=${newUser.user_name}`).then(res => {
+            if (res.ok) {
+                console.log("u_name is already exist")
+                // when the u_name is already exist
+                //return false;
+            } else {
+                // when the user_name is ok!
+                console.log("user_name is ok")
+                //               if (validPassword(newUser.password) && typeof newUser.age === "number" && newUser.age > 0 && newUser.age <= 120) {
+                console.log("hii")
+                fetch(`http://localhost:5182/api/Users/Register?user_name=${newUser.userName}&password=${newUser.password}&country=${newUser.country}&age=${newUser.age}`).then(res => {
+                    if (res.ok) {
+                        //LoginFetch();
+                        console.log("register starts")
+                        activeUser.user_name = newUser.userName;
+                        activeUser.password = newUser.password;
+                        setSuccessMessage(true);
+                        console.log(successMessage);
+                    }
+                })
+                //                }
+                //return true;
+            }
+        })
+
+        */
+        fetch('http://localhost:5182/api/Users/Register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                "user_name": newUser.user_name,
+                "password": newUser.password,
+                "country": newUser.country,
+                "age": newUser.age
+            })
+        }).then(res => {
+            if (res.ok) {
+                activeUser.user_name = newUser.user_name;
+                activeUser.password = newUser.password;
+                setSuccessMessage(true);
+                console.log(successMessage);
+            }
+        })
+        setNewUser({
+            user_name: "",
+            user_id: "",
+            password: "",
+            country: "",
+            age: "",
+            comments: ""
+        });
+    }
+
+    const noExistName = (newUser) => {
+        console.log(newUser)
+        fetch(`http://localhost:5182/api/Users/isExistUserName?user_name=${newUser.user_name}`).then(res => {
+            if (res.ok) {
+                console.log("when the u_name is already exist")
+                return false;
+            } else {
+                console.log("when the user_name is panoy")
+                if (typeof newUser.age === "number")
+                    console.log("correct !!!")
+
+                // when the user_name is ok!
+                return true;
+            }
+        })
+
     }
     const validPassword = (newPassword) => {
+        console.log(newPassword)
         if (!(/\d/.test(newPassword) && /[a-zA-Z]/.test(newPassword))) {
             return false;
         } else {
             return true;
+        }
+    }
+    const validAge = (age) => {
+        if (age > 0 && age <= 120) {
+            return true;
+        } else {
+            return false;
         }
     }
     const validuser_name = (uname) => {
@@ -102,7 +187,6 @@ function RegisterPage() {
                         name="user_name"
                         value={newUser.user_name}>
                     </input>
-                    {(!validuser_name(newUser.user_name) && !submitted && newUser.user_name != "") ? <div className=" m-1 badge rounded-pill bg-danger">please select a uniqe user name!</div> : null}
                     <label htmlFor="floatingUser" className="fs-4">User Name</label>
                 </div>
                 <>
@@ -138,6 +222,8 @@ function RegisterPage() {
                         id="floatingDisplay"
                         value={newUser.age}
                         placeholder="Age"></input>
+                    {(!validAge(newUser.age) && !submitted && newUser.user_name != "") ? <div className="m-1 badge rounded-pill bg-danger">please enter a valid age!</div> : null}
+
                     <label htmlFor="floatingDisplay" className="fs-4">Age</label>
                 </div>
 
@@ -147,7 +233,8 @@ function RegisterPage() {
                             <i className="bi bi bi-pen-fill"></i> Register</button>
                     </div>
                     <div className="col-7" id="submit">
-                        {(successMessage) ? <Link to='/chat'><button className="btn btn-success btn-karl offset-6 fs-4 mb-3" id="register-btn"><i className="bi bi-whatsapp"></i> Start Chatting!</button></Link> : null}
+                        {(successMessage) ? <Link to='/main'><button className="btn btn-success btn-karl offset-6 fs-4 mb-3" id="register-btn"> click here to Enter!</button></Link> : <>You must enter a valid password
+                            (at least one letter and number) and a valid age</>}
                     </div>
                     <div className="row">
                         <div className='col-4'></div>

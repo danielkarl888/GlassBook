@@ -6,6 +6,8 @@ import activeUser from "./ManagingUsersList/activeUser"
 import activeBook from "./activeBook";
 import moment from "moment";
 import NavBar from "./NavBar";
+import SearchBar from "./Search_bar";
+import ReviewForm from "./ReviewForm";
 function BookDetails({ id }) {
     const [comments, setComments] = useState(null);
     const [avg, setAVG] = useState(null);
@@ -29,9 +31,10 @@ function BookDetails({ id }) {
     return (
         <div className="container">
             <NavBar />
+            
             <div className="row">
                 <div class="col-sm">
-                    One of three columns
+                    <SearchBar/>
                 </div>
                 <div className="col-6">
                     <div>
@@ -72,6 +75,7 @@ function BookDetails({ id }) {
                     </div>
                 </div>
                 <div className="col-sm">
+                <ReviewForm/>       
                 </div>
             </div>
 

@@ -6,6 +6,7 @@ import activeUser from "./ManagingUsersList/activeUser"
 import activeBook from "./activeBook";
 import moment from "moment";
 import NavBar from "./NavBar";
+import SearchBar from "./Search_bar";
 function MainPage() {
     const [comments, setComments] = useState(null);
     const [topBooks, setTopBooks] = useState(null);
@@ -33,7 +34,7 @@ function MainPage() {
 
             <div class="row">
                 <div class="col-sm">
-                    One of three columns
+                    <SearchBar/>
                 </div>
                 <div class="col-5">
                     <div>

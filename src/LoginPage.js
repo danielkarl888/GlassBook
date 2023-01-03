@@ -7,12 +7,9 @@ function LoginPage() {
 
     const [newUser, setNewUser] = useState({
         user_name: "",
-        user_id: "",
         password: "",
-        country: "",
-        age: "",
-        comments: ""
     });
+    const [valid, setValid] = useState(false);
 
     const handleuser_nameChange = (event) => {
         setNewUser({ ...newUser, user_name: event.target.value })
@@ -24,17 +21,15 @@ function LoginPage() {
     }
     const handleSubmit = (event, newUser) => {
         event.preventDefault();
-        var bool = isValidUser(newUser)
-        if (!bool) {
-            setNewUser({
-                user_name: "",
-                user_id: "",
-                password: "",
-                country: "",
-                age: "",
-                comments: ""
-            });
-        }
+        fetch(`http://localhost:5182/api/Users/Login?user_name=${newUser.user_name}&password=${newUser.password}`)
+            .then(res => {
+                if (res.ok) {
+                    activeUser.user_name = newUser.user_name;
+                    activeUser.password = newUser.password;
+                    setValid(true);
+                }
+            })
+
     }
     const isValidUser = (newUser) => {
         if (!isExistuser_name(newUser.user_name)) {
@@ -43,10 +38,6 @@ function LoginPage() {
         for (var j = 0; j < userList.length; j++) {
             if (newUser.password == userList[j].password && newUser.user_name == userList[j].user_name) {
                 activeUser.user_name = userList[j].user_name;
-                activeUser.user_id = userList[j].user_id;
-                activeUser.country = userList[j].country;
-                activeUser.age = userList[j].age;
-                activeUser.comments = userList[j].comments;
                 console.log("activeUser is");
                 console.log(activeUser);
                 return true;
@@ -102,6 +93,7 @@ function LoginPage() {
                         <label htmlFor="floatingPassword" className="fs-4">Password</label>
                     </div>
                 </>
+                <input type="submit" value="Log In"></input>
                 <div className="form-floating mb-3 input-padding-5 p-3" id="login">
 
 
@@ -110,7 +102,7 @@ function LoginPage() {
                             Click here</Link> to Register!</span>
                     </div>
 
-                    {isValidUser(newUser) ? <LinkToChat /> : null}
+                    {valid ? <LinkToChat /> : (<> please enter a valid username and password</>)}
                 </div>
             </form>
             <div className="col-2"></div>

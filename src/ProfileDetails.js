@@ -3,57 +3,90 @@ import { useState, useEffect } from 'react';
 import userList from './ManagingUsersList/userList';
 import LinkToChat from "./LinkToChat";
 import activeUser from "./ManagingUsersList/activeUser"
+import activeBook from "./activeBook";
 import moment from "moment";
+import NavBar from "./NavBar";
+import SearchBar from "./Search_bar";
 
 function ProfileDetails() {
-    const [comments, setComments] = useState(null);
+    const [userDetails, setUserDetails] = useState(null);
+    const [myComments, setMyComments] = useState(null);
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch('http://localhost:5182/api/Users/');
+            const response = await fetch(`http://localhost:5182/api/Users/${activeUser.user_name}`);
+            //const response = await fetch(`http://localhost:5182/api/Users/DayazAdytum`);
             const json = await response.json();
-            setComments(json);
+            // talk with evyatar about this query
+            setUserDetails(json);
         }
         fetchData();
     }, []);
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch(`http://localhost:5182/api/Comments/mycomments/${activeUser.user_name}`);
 
+            if (response.ok) {
+                // the response was successful, you can parse the JSON data
+                const json = await response.json();
+                console.log(json)
+                setMyComments(json);
+            } else {
+                console.log("here!!")
+            }
+
+        }
+        fetchData();
+    }, []);
     return (
-        <div class="container">
-            <div class="row">
+        <div className="container">
+            <NavBar />
+            <div className="row">
                 <div class="col-sm">
-                    One of three columns
+                    <SearchBar />
                 </div>
-                <div class="col-6">
+                <div className="col-6">
                     <div>
-                        <h2> Last 50 Comments:</h2>
+                        {userDetails ? (<div><h2 className="display-4"> {userDetails[0].user_name}</h2>
+                            <span><h5 className="display-6">Age : {userDetails[0].age}</h5> </span>
+                            <span><h5 className="display-6" >Country : {userDetails[0].country}</h5> </span>
+                            <span><h5 className="display-6">Average rate : {userDetails[0].avg_rate > 0 ? ((Math.round(userDetails[0].avg_rate * 100) / 100).toFixed(2)) : 0}</h5> </span>
+                            <span><h5 className="display-6">Total number of comments : {userDetails[0].numComments}</h5> </span>
+                        </div>)
+                            : (<h2> Loading...:</h2>)}
+                        <h2 className="display-4"> My Last 50 Comments</h2>
+
                         <table className="table table-bordered">
                             <tr>
                                 <th>#</th>
                                 <th>Title</th>
-                                <th>Reviewer</th>
+                                <th>Author</th>
                                 <th>Rate</th>
                                 <th>Comment Text</th>
                                 <th>Date</th>
                             </tr>
 
-                            {comments ? (
+                            {myComments ? (
 
-                                comments.map(comment => <tr>
-                                    <td>{comment.seq}</td>
-                                    <td>{comment.book_name}</td>
-                                    <td>{comment.user_name}</td>
-                                    <td>{comment.rate}</td>
-                                    <td>{comment.comment_txt}</td>
-                                    <td>{moment(comment.date).utc().format('DD/MM/YYYY')}</td>
+                                myComments.map(c => <tr>
+                                    <td>{c.seq}</td>
+                                    <td><Link to='/book_details' onClick={() => {
+                                        activeBook.book_id = c.book_id;
+                                        console.log(activeBook);
+                                    }}>{c.book_name}</Link></td>
+                                    <td>{c.author_name}</td>
+                                    <td>{c.rate}</td>
+                                    <td>{c.comment}</td>
+                                    <td>{moment(c.date).utc().format('DD/MM/YYYY')}</td>
 
                                 </tr>)
                             ) : (
-                                <div>Loading...</div>
+                                <div>No Commnets...</div>
                             )}
                         </table>
                     </div>
                 </div>
-                <div class="col-sm">
-                    One of three columns
+                <div className="col-sm">
+
                 </div>
             </div>
 

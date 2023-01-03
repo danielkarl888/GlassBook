@@ -24,7 +24,7 @@ function NavBar() {
                             <i class="bi bi-person-circle"></i>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">My Profile</a>
+                        <Link to="/myprofile" style={{ textDecoration: 'none' }}><a class="dropdown-item" href="#">My Profile</a></Link>
                             <Link to="/" style={{ textDecoration: 'none' }}><a class="dropdown-item" href="/">Log Out</a></Link>
                         </div>
                     </li>
