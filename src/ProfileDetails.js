@@ -37,6 +37,13 @@ function ProfileDetails() {
         }
         fetchData();
     }, []);
+    function reformatDate(dateStr) {
+        const date = new Date(dateStr);
+        const month = ("0" + (date.getMonth() + 1)).slice(-2);
+        const day = ("0" + date.getDate()).slice(-2);
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+      }
     return (
         <div className="container">
             <NavBar />
@@ -76,7 +83,7 @@ function ProfileDetails() {
                                     <td>{c.author_name}</td>
                                     <td>{c.rate}</td>
                                     <td>{c.comment}</td>
-                                    <td>{moment(c.date).utc().format('DD/MM/YYYY')}</td>
+                                    <td>{reformatDate(c.date)}</td>
 
                                 </tr>)
                             ) : (

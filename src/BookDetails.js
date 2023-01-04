@@ -30,6 +30,13 @@ function BookDetails({ id }) {
         fetchData();
     }, [change]);
     console.log(activeBook)
+    function reformatDate(dateStr) {
+        const date = new Date(dateStr);
+        const month = ("0" + (date.getMonth() + 1)).slice(-2);
+        const day = ("0" + date.getDate()).slice(-2);
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+      }
     return (
         <div className="container">
             <NavBar />
@@ -67,7 +74,7 @@ function BookDetails({ id }) {
                                     <td>{comment.user_name}</td>
                                     <td>{comment.rate}</td>
                                     <td>{comment.comment_txt}</td>
-                                    <td>{moment(comment.date).utc().format('DD/MM/YYYY')}</td>
+                                    <td>{reformatDate(comment.date)}</td>
 
                                 </tr>)
                             ) : (

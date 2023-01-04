@@ -27,7 +27,13 @@ function MainPage() {
         }
         fetchData();
     }, []);
-
+    function reformatDate(dateStr) {
+        const date = new Date(dateStr);
+        const month = ("0" + (date.getMonth() + 1)).slice(-2);
+        const day = ("0" + date.getDate()).slice(-2);
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+      }
     return (
         <div class="container">
             <NavBar />
@@ -61,7 +67,7 @@ function MainPage() {
                                     <td>{comment.user_name}</td>
                                     <td>{comment.rate}</td>
                                     <td>{comment.comment_txt}</td>
-                                    <td>{moment(comment.date).utc().format('DD/MM/YYYY')}</td>
+                                    <td>{reformatDate(comment.date)}</td>
                                 </tr>)
                             ) : (
                                 <div class="spinner-border text-primary" role="status">

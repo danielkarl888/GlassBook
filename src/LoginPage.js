@@ -53,8 +53,6 @@ function LoginPage() {
         }
         return false;
     }
-
-
     return (
         <>
             <div className="col-2"></div>
@@ -89,20 +87,20 @@ function LoginPage() {
                             name="Password"
                             value={newUser.password}>
                         </input>
-
                         <label htmlFor="floatingPassword" className="fs-4">Password</label>
                     </div>
                 </>
-                <input type="submit" value="Log In"></input>
+                <div className="text-center">
+                <input type="submit" value="Log In" className="btn btn-primary text-center fs-5"></input>
+                </div>
                 <div className="form-floating mb-3 input-padding-5 p-3" id="login">
 
+                    {valid ? <LinkToChat /> : (<div className="text-center text-danger h5 "> Please enter a valid username and password!</div>)}
 
                     <div className="text-center fs-5" id="submit">
                         <span>not Registered? <Link to='/regi' className="link" id="changeToRegister">
                             Click here</Link> to Register!</span>
                     </div>
-
-                    {valid ? <LinkToChat /> : (<> please enter a valid username and password</>)}
                 </div>
             </form>
             <div className="col-2"></div>
