@@ -71,7 +71,10 @@ function SearchPage() {
                             {books ? (
                                 books.length > 0 ? (
                                     books.map(book => <tr>
-                                        <td>{book.book_name}</td>
+                                        <td><Link to='/book_details' onClick={() => {
+                                            activeBook.book_id = book.book_id;
+                                            activeBook.book_name = book.book_name;
+                                        }}>{book.book_name}</Link></td>
                                         <td>{book.author_name}</td>
                                         <td>{book.avg_rate}</td>
                                         <td><img src={book.img}></img></td>

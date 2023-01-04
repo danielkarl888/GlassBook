@@ -49,7 +49,6 @@ function ProfileDetails() {
                         {userDetails ? (<div><h2 className="display-4"> {userDetails[0].user_name}</h2>
                             <span><h5 className="display-6">Age : {userDetails[0].age}</h5> </span>
                             <span><h5 className="display-6" >Country : {userDetails[0].country}</h5> </span>
-                            <span><h5 className="display-6">Average rate : {userDetails[0].avg_rate > 0 ? ((Math.round(userDetails[0].avg_rate * 100) / 100).toFixed(2)) : 0}</h5> </span>
                             <span><h5 className="display-6">Total number of comments : {userDetails[0].numComments}</h5> </span>
                         </div>)
                             : (<h2> Loading...:</h2>)}
@@ -71,6 +70,7 @@ function ProfileDetails() {
                                     <td>{c.seq}</td>
                                     <td><Link to='/book_details' onClick={() => {
                                         activeBook.book_id = c.book_id;
+                                        activeBook.book_name = c.book_name
                                         console.log(activeBook);
                                     }}>{c.book_name}</Link></td>
                                     <td>{c.author_name}</td>

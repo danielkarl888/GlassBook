@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import activeBook from './activeBook';
 import activeUser from './ManagingUsersList/activeUser';
-const ReviewForm = () => {
+const ReviewForm = ({ setChange, change }) => {
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(0);
     const [empty, setEmpty] = useState(true);
@@ -10,8 +10,26 @@ const ReviewForm = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         if (!empty) {
+            fetch('http://localhost:5182/api/Comments/addComment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "user_name": activeUser.user_name,
+                    "comment_txt": review,
+                    "rate": rating,
+                    "book_id": activeBook.book_id
+                })
+            }).then(res => {
+                if (res.ok) {
+                    setChange(change+1);
+
+                    // has to be changed!
+                }
+            })
             console.log(rating)
-            console.log(review)    
+            console.log(review)
         }
     };
 

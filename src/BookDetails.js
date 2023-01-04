@@ -11,6 +11,8 @@ import ReviewForm from "./ReviewForm";
 function BookDetails({ id }) {
     const [comments, setComments] = useState(null);
     const [avg, setAVG] = useState(null);
+    const [change, setChange] = useState(1);
+
     useEffect(() => {
         async function fetchData() {
             const response = await fetch(`http://localhost:5182/api/Books/avg/${activeBook.book_id}`);
@@ -18,7 +20,7 @@ function BookDetails({ id }) {
             setAVG(json);
         }
         fetchData();
-    }, []);
+    }, [change]);
     useEffect(() => {
         async function fetchData() {
             const response = await fetch(`http://localhost:5182/api/Books/${activeBook.book_id}`);
@@ -26,7 +28,7 @@ function BookDetails({ id }) {
             setComments(json);
         }
         fetchData();
-    }, []);
+    }, [change]);
     console.log(activeBook)
     return (
         <div className="container">
@@ -75,7 +77,7 @@ function BookDetails({ id }) {
                     </div>
                 </div>
                 <div className="col-sm">
-                <ReviewForm/>       
+                <ReviewForm setChange = {setChange} change={change} />       
                 </div>
             </div>
 
