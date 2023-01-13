@@ -4,6 +4,6 @@
 };
 */
 const activeUser = {
-    user_name: 'test', password: 'test'
+    user_name: 'daniel', password: 'daniel1'
 };
 export default activeUser;

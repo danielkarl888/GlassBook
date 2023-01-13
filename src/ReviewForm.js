@@ -6,6 +6,7 @@ const ReviewForm = ({ setChange, change }) => {
     const [review, setReview] = useState('');
     const [rating, setRating] = useState(0);
     const [empty, setEmpty] = useState(true);
+    const [error, setError] = useState(false);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -23,9 +24,12 @@ const ReviewForm = ({ setChange, change }) => {
                 })
             }).then(res => {
                 if (res.ok) {
-                    setChange(change+1);
+                    setError(false);
+                    setChange(change + 1);
 
                     // has to be changed!
+                } else {
+                    setError(true);
                 }
             })
             console.log(rating)
@@ -50,6 +54,7 @@ const ReviewForm = ({ setChange, change }) => {
             </div>
             <br></br>
             {empty ? (<div><strong>Review must contains text!</strong></div>) : <></>}
+            {error ? (<div><strong>Error when trying add the comment - please try again</strong></div>) : <></>}
             <button type="submit" className="btn btn-primary text-center">Submit Review</button>
         </form>
     );
