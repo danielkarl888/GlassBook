@@ -10,6 +10,7 @@ function LoginPage() {
         password: "",
     });
     const [valid, setValid] = useState(false);
+    const [error, setError] = useState(false);
 
     const handleuser_nameChange = (event) => {
         setNewUser({ ...newUser, user_name: event.target.value })
@@ -24,9 +25,12 @@ function LoginPage() {
         fetch(`http://localhost:5182/api/Users/Login?user_name=${newUser.user_name}&password=${newUser.password}`)
             .then(res => {
                 if (res.ok) {
+                    setError(false);
                     activeUser.user_name = newUser.user_name;
                     activeUser.password = newUser.password;
                     setValid(true);
+                } else {
+                    setError(true);
                 }
             })
 
@@ -91,11 +95,12 @@ function LoginPage() {
                     </div>
                 </>
                 <div className="text-center">
-                <input type="submit" value="Log In" className="btn btn-primary text-center fs-5"></input>
+                    <input type="submit" value="Log In" className="btn btn-primary text-center fs-5"></input>
                 </div>
                 <div className="form-floating mb-3 input-padding-5 p-3" id="login">
 
                     {valid ? <LinkToChat /> : (<div className="text-center text-danger h5 "> Please enter a valid username and password!</div>)}
+                    {error ? <div className="text-center">error with interacting with the server- please try again!</div> : <></>}
 
                     <div className="text-center fs-5" id="submit">
                         <span>not Registered? <Link to='/regi' className="link" id="changeToRegister">
