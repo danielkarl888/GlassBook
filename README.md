@@ -4,6 +4,9 @@ This repository contains the client side code for the GlassBook web application,
 
 To use the GlassBook web application, you will need to set up the API server side, which is located in a separate repository at https://github.com/danielkarl888/glassbookAPI.
 
+For more information on GlassBook, please refer to the software documentation and user manual included in this repository. These resources will help you understand the project's features, requirements, and how to use it.
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
