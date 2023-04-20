@@ -1,4 +1,9 @@
-# Getting Started with Create React App
+# GlassBook
+GlassBook is a social network project designed for book lovers.
+This repository contains the client side code for the GlassBook web application, which was built using React.js.
+
+To use the GlassBook web application, you will need to set up the API server side, which is located in a separate repository at https://github.com/danielkarl888/glassbookAPI.
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
