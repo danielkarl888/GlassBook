@@ -10,8 +10,7 @@ For more information on GlassBook, please refer to the software documentation an
 
 **Watch the Introduction video of glassBook on YouTube:**
 
-[![image](https://github.com/danielkarl888/glassbook/assets/74876857/4420d946-3879-4ff4-843e-2639c05188a3
-)](https://www.youtube.com/watch?v=VXJhI07RLXc)
+[![YouTube Video](https://img.youtube.com/vi/VXJhI07RLXc/0.jpg)](https://www.youtube.com/watch?v=VXJhI07RLXc)
 
 
 
