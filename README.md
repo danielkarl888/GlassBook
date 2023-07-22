@@ -1,4 +1,4 @@
-![image](https://github.com/danielkarl888/glassbook/assets/74876857/4420d946-3879-4ff4-843e-2639c05188a3)# GlassBook
+# GlassBook
 GlassBook is a social network project designed for book lovers.
 This repository contains the client side code for the GlassBook web application, which was built using React.js.
 
@@ -9,7 +9,7 @@ For more information on GlassBook, please refer to the software documentation an
 
 
 Watch the Introduction video of glassbook in YouTube:
-[![YouTube Video](![image](https://github.com/danielkarl888/glassbook/assets/74876857/a44ad4f4-f17d-4063-b59b-e3f972a31d28)
+[![image](https://github.com/danielkarl888/glassbook/assets/74876857/4420d946-3879-4ff4-843e-2639c05188a3))
 )](https://www.youtube.com/watch?v=VXJhI07RLXc)
 
 
