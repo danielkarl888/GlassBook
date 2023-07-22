@@ -6,6 +6,8 @@ To use the GlassBook web application, you will need to set up the API server sid
 
 For more information on GlassBook, please refer to the software documentation and user manual included in this repository. These resources will help you understand the project's features, requirements, and how to use it.
 
+[![YouTube Video](https://img.youtube.com/vi/VXJhI07RLXc/0.jpg)](https://www.youtube.com/watch?v=VXJhI07RLXc)
+
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
