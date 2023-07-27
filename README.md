@@ -10,7 +10,7 @@ For more information on GlassBook, please refer to the software documentation an
 
 **Watch the Introduction video of glassBook on YouTube:**
 
-[![YouTube Video](https://img.youtube.com/vi/VXJhI07RLXc/0.jpg)](https://www.youtube.com/watch?v=VXJhI07RLXc)
+[![YouTube Video](https://img.youtube.com/vi/VXJhI07RLXc/0.jpg)](https://www.youtube.com/watch?v=FKjeQNyIu6E)
 
 
 
