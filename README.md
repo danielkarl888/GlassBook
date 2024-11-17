@@ -1,89 +1,73 @@
-# GlassBook
-GlassBook is a social network project designed for book lovers.
-This repository contains the client side code for the GlassBook web application, which was built using React.js.
+# GlassBook  
 
-To use the GlassBook web application, you will need to set up the API server side, which is located in a separate repository at https://github.com/danielkarl888/glassbook_backend.
+GlassBook is a social networking platform designed for book lovers.  
+This repository contains the **client-side code** for the GlassBook web application, built using **React.js**.
 
-For more information on GlassBook, please refer to the software documentation and user manual included in this repository. These resources will help you understand the project's features, requirements, and how to use it.
+---
 
+## Overview  
 
+GlassBook allows users to:  
+- Discover and share book recommendations.  
+- Find popular books by different criteria, such as popularity by country, category, and more.  
+- Leave reviews and engage in meaningful discussions about their favorite books.  
 
-**Watch the Introduction video of glassBook on YouTube:**
+---
 
-[![YouTube Video](https://img.youtube.com/vi/VXJhI07RLXc/0.jpg)](https://www.youtube.com/watch?v=FKjeQNyIu6E)
+## Backend Repository  
 
+To fully use the GlassBook web application, you need to set up the **API server**, which is hosted in a separate repository:  
+[GlassBook Backend Repository](https://github.com/danielkarl888/glassbook_backend)  
 
+Follow the instructions in the backend repository to set up the server.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## React-Router-Dom
-please download the react-router-dom via the cmd. 
-enter `npm install react-router-dom`
+## Installation  
 
+Follow these steps to set up the client-side application:  
 
-## Available Scripts
+1. **Clone the repository**:  
+   ```bash
+   git clone https://github.com/danielkarl888/glassbook_client.git
+   cd glassbook_client
+   ```  
 
-In the project directory, you can run:
+2. **Install dependencies**:  
+   Make sure you have **Node.js** and **npm** installed. Then, run:  
+   ```bash
+   npm install
+   ```  
 
-### `npm start`
+3. **Set up environment variables**:  
+   Create a `.env` file in the root directory and configure it with the backend server URL:  
+   ```env
+   REACT_APP_API_URL=http://localhost:5000
+   ```  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+4. **Run the application**:  
+   Start the development server using:  
+   ```bash
+   npm start
+   ```  
+   The app will be available at `http://localhost:3000`.  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Documentation  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+For a comprehensive overview of the project, including features, setup requirements, and usage instructions, refer to the **software documentation** and **user manual** provided in this repository.  
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Video Introduction  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Learn more about GlassBook through our introduction video:  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[![Watch on YouTube](https://img.youtube.com/vi/FKjeQNyIu6E/0.jpg)](https://www.youtube.com/watch?v=FKjeQNyIu6E)  
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Technical Details  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).  
