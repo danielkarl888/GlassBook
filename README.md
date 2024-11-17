@@ -3,15 +3,19 @@
 GlassBook is a social networking platform designed for book lovers.  
 This repository contains the **client-side code** for the GlassBook web application, built using **React.js**.  
 
+<img src="https://github.com/user-attachments/assets/35001fda-2770-4f98-9533-e14611cc1d51" width="700"/>
+
+
 ---
 
 ## 🌟 Overview  
+
 
 GlassBook allows users to:  
 - 📖 Discover and share book recommendations.  
 - 🌍 Find popular books by different criteria, such as popularity by country, category, and more.  
 - 📝 Leave reviews and engage in meaningful discussions about their favorite books.  
-
+<img src="https://github.com/user-attachments/assets/d51edee6-ecc6-4719-b54b-d7f9ae304e0b" width="700"/>
 ---
 
 ## 🔗 Backend Repository  
