@@ -77,5 +77,3 @@ Learn more about GlassBook through our introduction video:
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).  
 
 ---  
-
-What do you think of the new look? 😊
